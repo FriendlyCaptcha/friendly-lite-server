@@ -1,5 +1,6 @@
 <?php
 
+require_once 'env.php';
 require_once 'polite.class.php';
 
 /**
@@ -17,7 +18,14 @@ if ($_POST['solution']) {
 }
 
 list($signature, $puzzle, $solutions, $diagnostics) = explode('.', $solution);
-$puzzleHex = bin2hex(base64_decode($puzzle));
+$puzzleBin = base64_decode($puzzle);
+$puzzleHex = bin2hex($puzzleBin);
+
+if (($calculated = Polite::signBuffer($puzzleBin)) !== $signature) {
+    Polite::log(sprintf('Signature mismatch. Calculated "%s", given "%s"', $calculated, $signature));
+    Polite::returnSolutionInvalid();
+}
+
 $numberOfSolutions = hexdec(Polite::extractHexBytes($puzzleHex, 14, 1));
 $timeStamp = hexdec(Polite::extractHexBytes($puzzleHex, 0, 4));
 $expiry = hexdec(Polite::extractHexBytes($puzzleHex, 13, 1));
@@ -36,7 +44,8 @@ if ($expiry == 0) {
     if ($age <= $expiry) {
         Polite::log("puzzle is young enough");
     } else {
-        echo "puzzle is too old" . PHP_EOL;
+        Polite::log(sprintf("puzzle is too old (%d seconds, allowed: %d", $age, $expiry));
+        Polite::returnSolutionTimeoutOrDuplicate();
     }
 }
 
@@ -83,4 +92,3 @@ $result = [
 ];
 
 echo json_encode($result);
-

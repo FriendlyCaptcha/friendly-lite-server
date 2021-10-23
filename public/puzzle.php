@@ -1,6 +1,8 @@
 <?php
 
+require_once 'env.php';
 require_once 'polite.class.php';
+
 Polite::cors();
 
 header('Content-type: application/json');
@@ -8,14 +10,9 @@ header('Content-type: application/json');
 $accountId = 1;
 $appId = 1;
 $puzzleVersion = 1;
-$puzzleExpiry = 0x0c;
-$numberOfSolutions = 48;
-$puzzleDifficulty = 133;
-
-
-$numberOfSolutions = 20;
-$puzzleDifficulty = 133;
-
+$puzzleExpiry = EXPIRY_TIMES_5_MINUTES;
+$numberOfSolutions = NUMBER_OF_SOLUTIONS;
+$puzzleDifficulty = PUZZLE_DIFFICULTY;
 
 $nonce = random_bytes(8);
 
@@ -34,7 +31,7 @@ $bufferHex = Polite::padHex($timeHex, 4) . $accountIdHex . $appIdHex . $puzzleVe
 
 
 $buffer = hex2bin($bufferHex);
-$hash = hash_hmac('sha256', $buffer, 'mysecret');
+$hash = Polite::signBuffer($buffer);
 
 $puzzle = $hash . '.' . base64_encode($buffer);
 

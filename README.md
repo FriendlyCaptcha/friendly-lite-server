@@ -15,23 +15,19 @@ We highly recommend to subscribe to the Friendly Captcha service to support thei
 You need a web server running PHP 7.4 or later.
 
 1. Install the public folder to the your document root.
-2. Patch the recaptcha widget to use your server
-3. In your backend configuration, use the your own server endpoint and
+2. Copy and adapt env.template.php to env.php 
+3. Change the friendly captcha widgets endpoint to user your server
+4. In your backend configuration, use the your own server endpoint and
 
-
-## Configurations
-
-t.b.d.
-In config.php define any secret key.
-
-## Patching the widget
+## Endpoints
 
 Instead of `https://api.friendlycaptcha.com/api/v1/siteverify` use `https://yourserver/siteverify.php`.
 Instead of `https://(eu-)api.friendlycaptcha.eu/api/v1/puzzle"` use `https://yourserver/puzzle.php`. 
 
 ## What works
 
-* Check of puzzles 
+* Check of signature
+* Check of puzzles
 * Check of timestamps
 
 ## Roadmap

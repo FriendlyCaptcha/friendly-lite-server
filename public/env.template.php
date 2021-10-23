@@ -1,0 +1,8 @@
+<?php
+
+define('SECRET', 'FILL-YOUR-SECRET-HERE');
+define('API_KEY', 'FILL-YOUR-API-KEY-HERE');
+
+define('NUMBER_OF_SOLUTIONS', 20);
+define('PUZZLE_DIFFICULTY', 133);
+define('EXPIRY_TIMES_5_MINUTES', 12); // 1 hour

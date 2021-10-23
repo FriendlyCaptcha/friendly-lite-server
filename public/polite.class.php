@@ -42,6 +42,32 @@ class Polite
         error_log($message);
     }
 
+    public static function signBuffer(string $buffer)
+    {
+        return hash_hmac('sha256', $buffer, SECRET);
+    }
+
+    private static function returnResponse($success, $httpCode, $error)
+    {
+        $result = [
+            'success' => $success,
+            'error' => $error,
+        ];
+        http_response_code($httpCode);
+        echo json_encode($result);
+        exit(0);
+
+    }
+    public static function returnSolutionInvalid()
+    {
+        self::returnResponse(false, 200, 'solution_invalid');
+    }
+
+    public static function returnSolutionTimeoutOrDuplicate()
+    {
+        self::returnResponse(false, 200, 'solution_timeout_or_duplicate');
+    }
+
     public function littleEndianHexToDec(string $hexValue): int
     {
         $bigEndianHex = implode('', array_reverse(str_split($hexValue, 2)));
