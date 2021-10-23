@@ -46,10 +46,22 @@ class Polite
         return hexdec($bigEndianHex);
     }
 
-
     public static function log($message)
     {
-        error_log($message);
+        if (LOG_FILE == false) {
+            return;
+        }
+        $timestamp = date('[Y-m-d H:i:sP]');
+        file_put_contents(LOG_FILE, $timestamp . ' ' . $message . PHP_EOL, FILE_APPEND);
+    }
+
+    public static function anonymizeIp(string $ip): string
+    {
+        return preg_replace(
+            ['/\.\d*$/', '/[\da-f]*:[\da-f]*$/'],
+            ['.XXX', 'XXXX:XXXX'],
+            $ip
+        );
     }
 
     public static function signBuffer(string $buffer)
@@ -92,4 +104,5 @@ class Polite
 
         exit(0);
     }
+
 }

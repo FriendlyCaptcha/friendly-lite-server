@@ -30,7 +30,8 @@ if (($calculated = Polite::signBuffer($puzzleBin)) !== $signature) {
     Polite::returnSolutionInvalid();
 }
 
-if (!apcu_add($puzzleHex, true)) {
+// only need to store as long as valid, after that the timeout will kick in
+if (!apcu_add($puzzleHex, true, EXPIRY_TIMES_5_MINUTES * 300)) {
     Polite::log(sprintf('Puzzle "%s" was already successfully used before', $puzzleHex));
     Polite::returnSolutionTimeoutOrDuplicate();
 }

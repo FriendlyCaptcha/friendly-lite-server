@@ -35,16 +35,10 @@ Instead of `https://(eu-)api.friendlycaptcha.eu/api/v1/puzzle"` use `https://you
 * Check of signature
 * Check of puzzles
 * Check of timestamps
+* Replay checks
+* Basic difficulty scaling
 
-## Roadmap
-
-* Replay check (by database? Or in memory?) APCU? 
-
-## What's not being implemented 
-
-* No smart difficulty scaling / we don't keep track of past requests to scale the difficulty, pull requests are welcome
-
-## Trouble shooting 
+## Troubleshooting 
 
 ### The widget shows an error when loading the puzzle 
 
