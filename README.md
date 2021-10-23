@@ -1,4 +1,4 @@
-# polite-server - Self Hosted Captcha Server, compatible with for Friendly Captcha
+# polite-server - Self Hosted Captcha Server, compatible with Friendly Captcha
 
 ## Motivation
 
