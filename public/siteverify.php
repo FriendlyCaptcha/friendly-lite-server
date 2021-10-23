@@ -60,8 +60,18 @@ Polite::log("d: " . $d);
 $T = floor(pow(2, (255.999 - $d) / 8.0));
 Polite::log("T: " . $T);
 
+
+$solutionSeenInThisRequest = [];
+
 for ($solutionIndex = 0; $solutionIndex < $numberOfSolutions; $solutionIndex++) {
     $currentSolution = Polite::extractHexBytes($solutionsHex, $solutionIndex * 8, 8);
+
+    if ($solutionSeenInThisRequest[$currentSolution]) {
+        Polite::log('Solution seen in this request before');
+        Polite::returnSolutionInvalid();
+    }
+    $solutionSeenInThisRequest[$currentSolution] = true;
+
     $fullSolution = Polite::padHex($puzzleHex, 120, STR_PAD_RIGHT) . $currentSolution;
 
     Polite::log('fullsolution length: ' . strlen($fullSolution));
@@ -77,15 +87,7 @@ for ($solutionIndex = 0; $solutionIndex < $numberOfSolutions; $solutionIndex++) 
         Polite::log($currentSolution . ' is valid');
     } else {
         Polite::log($currentSolution . ' (index: ' . $solutionIndex . ') is invalid (' . $first4Int . ' >= ' . $T . ')');
-
-        $result = [
-            'success' => false,
-            'error' => 'solution_invalid',
-        ];
-
-        http_response_code(200);
-        echo json_encode($result);
-        exit(0);
+        Polite::returnSolutionInvalid();
     }
 }
 
