@@ -30,6 +30,11 @@ if (($calculated = Polite::signBuffer($puzzleBin)) !== $signature) {
     Polite::returnSolutionInvalid();
 }
 
+if (!apcu_add($puzzleHex, true)) {
+    Polite::log(sprintf('Puzzle "%s" was already successfully used before', $puzzleHex));
+    Polite::returnSolutionTimeoutOrDuplicate();
+}
+
 $numberOfSolutions = hexdec(Polite::extractHexBytes($puzzleHex, 14, 1));
 $timeStamp = hexdec(Polite::extractHexBytes($puzzleHex, 0, 4));
 $expiry = hexdec(Polite::extractHexBytes($puzzleHex, 13, 1));
@@ -66,7 +71,7 @@ $solutionSeenInThisRequest = [];
 for ($solutionIndex = 0; $solutionIndex < $numberOfSolutions; $solutionIndex++) {
     $currentSolution = Polite::extractHexBytes($solutionsHex, $solutionIndex * 8, 8);
 
-    if ($solutionSeenInThisRequest[$currentSolution]) {
+    if (isset($solutionSeenInThisRequest[$currentSolution])) {
         Polite::log('Solution seen in this request before');
         Polite::returnSolutionInvalid();
     }

@@ -74,7 +74,7 @@ class Polite
 
     public static function returnValid()
     {
-        self::returnReponse(true, 200);
+        self::returnResponse(true, 200);
     }
 
     private static function returnResponse($success, $httpCode, $error = null)

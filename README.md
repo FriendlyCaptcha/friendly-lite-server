@@ -10,6 +10,12 @@ for puzzle and verification on your own machine.
 
 We highly recommend to subscribe to the Friendly Captcha service to support their awesome work.
 
+## Requirements
+
+* PHP 7.4 or higher
+* sodium support
+* apcu support
+
 ## Installation
 
 You need a web server running PHP 7.4 or later.
