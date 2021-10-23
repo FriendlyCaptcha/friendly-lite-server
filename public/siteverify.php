@@ -90,10 +90,5 @@ for ($solutionIndex = 0; $solutionIndex < $numberOfSolutions; $solutionIndex++) 
     }
 }
 
-
 Polite::log('all valid');
-$result = [
-    'success' => true,
-];
-
-echo json_encode($result);
+Polite::returnValid();

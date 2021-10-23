@@ -2,6 +2,9 @@
 
 class Polite
 {
+    /**
+     * @source https://stackoverflow.com/a/9866124
+     */
     public static function cors(): void
     {
         // Allow from any origin
@@ -37,6 +40,13 @@ class Polite
         return substr($string, $offset * 2, $count * 2);
     }
 
+    public function littleEndianHexToDec(string $hexValue): int
+    {
+        $bigEndianHex = implode('', array_reverse(str_split($hexValue, 2)));
+        return hexdec($bigEndianHex);
+    }
+
+
     public static function log($message)
     {
         error_log($message);
@@ -47,17 +57,6 @@ class Polite
         return hash_hmac('sha256', $buffer, SECRET);
     }
 
-    private static function returnResponse($success, $httpCode, $error)
-    {
-        $result = [
-            'success' => $success,
-            'error' => $error,
-        ];
-        http_response_code($httpCode);
-        echo json_encode($result);
-        exit(0);
-
-    }
     public static function returnSolutionInvalid()
     {
         self::returnResponse(false, 200, 'solution_invalid');
@@ -73,9 +72,24 @@ class Polite
         self::returnResponse(false, 400, 'solution_missing');
     }
 
-    public function littleEndianHexToDec(string $hexValue): int
+    public static function returnValid()
     {
-        $bigEndianHex = implode('', array_reverse(str_split($hexValue, 2)));
-        return hexdec($bigEndianHex);
+        self::returnReponse(true, 200);
+    }
+
+    private static function returnResponse($success, $httpCode, $error = null)
+    {
+        $result = [
+            'success' => $success,
+        ];
+
+        if ($error !== null) {
+            $result['error'] = $error;
+        }
+
+        http_response_code($httpCode);
+        echo json_encode($result);
+
+        exit(0);
     }
 }
