@@ -39,13 +39,13 @@ $solutionsHex = bin2hex(base64_decode($solutions));
 Polite::log('puzzleHex: ' . $puzzleHex);
 
 Polite::log("timeStamp: " . $timeStamp);
-$age = time()- $timeStamp;
+$age = time() - $timeStamp;
 Polite::log("age:" . $age);
 
 if ($expiry == 0) {
     Polite::log("does not expire" );
 } else {
-    if ($age <= $expiry) {
+    if ($age <= $expiryInSeconds) {
         Polite::log("puzzle is young enough");
     } else {
         Polite::log(sprintf("puzzle is too old (%d seconds, allowed: %d", $age, $expiry));
