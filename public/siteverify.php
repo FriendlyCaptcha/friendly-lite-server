@@ -76,7 +76,6 @@ for ($solutionIndex = 0; $solutionIndex < $numberOfSolutions; $solutionIndex++) 
 
     Polite::log('fullsolution length: ' . strlen($fullSolution));
     Polite::log('fullsolution: ' . $fullSolution);
-    /** @source https://lindevs.com/generate-blake2b-hash-using-php/ */
 
     $blake2b256hash = bin2hex(sodium_crypto_generichash(hex2bin($fullSolution), '', 32));
     Polite::log('Blake hash: ' . $blake2b256hash);
