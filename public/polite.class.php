@@ -68,6 +68,11 @@ class Polite
         self::returnResponse(false, 200, 'solution_timeout_or_duplicate');
     }
 
+    public static function returnErrorEmptySolution()
+    {
+        self::returnResponse(false, 400, 'solution_missing');
+    }
+
     public function littleEndianHexToDec(string $hexValue): int
     {
         $bigEndianHex = implode('', array_reverse(str_split($hexValue, 2)));

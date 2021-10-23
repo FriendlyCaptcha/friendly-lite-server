@@ -17,6 +17,10 @@ if ($_POST['solution']) {
     $solution = $input['solution'];
 }
 
+if (empty($solution)) {
+    Polite::returnErrorEmptySolution();
+}
+
 list($signature, $puzzle, $solutions, $diagnostics) = explode('.', $solution);
 $puzzleBin = base64_decode($puzzle);
 $puzzleHex = bin2hex($puzzleBin);
