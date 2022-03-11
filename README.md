@@ -1,14 +1,15 @@
-# polite-server - Self Hosted Captcha Server, compatible with Friendly Captcha
+# friendly-lite-server - Self Hosted Captcha Server, compatible with Friendly Captcha
 
 ## Motivation
 
 FriendlyCaptcha.com offers a privacy aware captcha service.
-Due to various reasons (for example very strict data protection rules) it might make sense to host the service
-for puzzle and verification on your own machine.
+This service offers you to host a lite server version of the service with some basic
+features for puzzle and verification on your machine.
 
 ## Subscriptions
 
-We highly recommend to subscribe to the Friendly Captcha service to support their awesome work.
+If you need more advanced security features or want to support our work, we highly 
+recommend to subscribe to the Friendly Captcha service.
 
 ## Requirements
 
@@ -37,6 +38,9 @@ Instead of `https://(eu-)api.friendlycaptcha.eu/api/v1/puzzle"` use `https://you
 * Check of timestamps
 * Replay checks
 * Basic difficulty scaling
+
+## License 
+This software is [fair-code](http://faircode.io) distributed under [**Apache 2.0 with Commons Clause**](https://github.com/FriendlyCaptcha/friendly-captcha-lite-server/blob/main/LICENSE) license.
 
 ## Troubleshooting 
 
