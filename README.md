@@ -2,7 +2,7 @@
 
 ## Motivation
 
-FriendlyCaptcha.com offers a privacy aware captcha service.
+Friendly Captcha offers a privacy aware captcha service.
 This service offers you to host a lite server version of the service with some basic
 features for puzzle and verification on your machine.
 
