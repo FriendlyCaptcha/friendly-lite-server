@@ -2,14 +2,14 @@
 
 ## Motivation
 
-Friendly Captcha offers a privacy aware captcha service.
+[Friendly Captcha](https://friendlycaptcha.com) offers a privacy aware captcha service.
 This service offers you to host a lite server version of the service with some basic
 features for puzzle and verification on your machine.
 
 ## Subscriptions
 
 If you need more advanced security features or want to support our work, we highly 
-recommend to subscribe to the Friendly Captcha service.
+recommend to [subscribe](https://friendlycaptcha.com/signup) to the Friendly Captcha service.
 
 ## Requirements
 
