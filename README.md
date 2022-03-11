@@ -1,15 +1,10 @@
 # friendly-lite-server - Self Hosted Captcha Server, compatible with Friendly Captcha
 
-## Motivation
+[**Friendly Captcha**](https://friendlycaptcha.com) offers a privacy aware captcha service. This repository provides a lite server version of the service with some basic features for puzzle and verification on your own machine. The Friendly Captcha service works normally by serving challenges with the difficulty based on the likelihood of being a real human user, as well as being highly available. This implementation is much simpler but will work for small hobby projects.
 
-[**Friendly Captcha**](https://friendlycaptcha.com) offers a privacy aware captcha service.
-This service offers you to host a lite server version of the service with some basic
-features for puzzle and verification on your machine.
+This distribution is licensed under a non-commercial source available license, which means you can run this server yourself for non-commercial or internal projects. 
 
-## Subscriptions
-
-If you need more advanced security features or want to support our work, we highly 
-recommend to [**subscribe**](https://friendlycaptcha.com/signup) to the Friendly Captcha service.
+If you need more advanced security features and reliability or want to support our work, we highly recommend to [**subscribe**](https://friendlycaptcha.com/signup) to the Friendly Captcha service.
 
 ## Requirements
 
