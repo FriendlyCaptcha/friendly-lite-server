@@ -35,7 +35,7 @@ Instead of `https://(eu-)api.friendlycaptcha.eu/api/v1/puzzle"` use `https://you
 * Basic difficulty scaling
 
 ## License 
-This software is [**fair-code**](http://faircode.io) distributed under [**Apache 2.0 with Commons Attribution Clause**](https://github.com/FriendlyCaptcha/friendly-captcha-lite-server/blob/main/LICENSE) license.
+This software is [**fair-code**](http://faircode.io) distributed under [**Apache 2.0 with Commons Attribution Clause**](https://github.com/FriendlyCaptcha/friendly-lite-server/blob/main/LICENSE) license.
 
 ## Troubleshooting 
 
