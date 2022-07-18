@@ -40,7 +40,7 @@ class Polite
         return substr($string, $offset * 2, $count * 2);
     }
 
-    public function littleEndianHexToDec(string $hexValue): int
+    public static function littleEndianHexToDec(string $hexValue): int
     {
         $bigEndianHex = implode('', array_reverse(str_split($hexValue, 2)));
         return hexdec($bigEndianHex);
