@@ -9,15 +9,20 @@ require_once 'polite.class.php';
 
 header('Content-type: application/json');
 
-$inputJson = file_get_contents('php://input');
-if ($_POST['solution']) {
+if (isset($_POST['solution'])) {
     $solution = $_POST['solution'];
 } else {
-    $input = json_decode($inputJson, true);
+    $inputRaw = file_get_contents('php://input');
+    $input = json_decode($inputRaw, true);
+    if (empty($input)) {
+	$input = [];
+	Polite::parseRawHttpInput($inputRaw, $input);
+    }
     $solution = $input['solution'];
 }
 
-if (empty($solution)) {
+if (empty($solution) || $solution[0] === '.') {
+    Polite::log('Empty or pending solution: ' . $solution);
     Polite::returnErrorEmptySolution();
 }
 
