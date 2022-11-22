@@ -11,6 +11,7 @@ header('Content-type: application/json');
 
 if (isset($_POST['solution'])) {
     $solution = $_POST['solution'];
+    $apiKey = $_POST['secret'];
 } else {
     $inputRaw = file_get_contents('php://input');
     $input = json_decode($inputRaw, true);
@@ -19,6 +20,12 @@ if (isset($_POST['solution'])) {
 	Polite::parseRawHttpInput($inputRaw, $input);
     }
     $solution = $input['solution'];
+    $apiKey = $input['secret'];
+}
+
+// check API key
+if ($apiKey != API_KEY){
+    Polite::returnWrongApiKeyError();
 }
 
 if (empty($solution) || $solution[0] === '.') {
