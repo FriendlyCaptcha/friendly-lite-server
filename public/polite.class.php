@@ -84,6 +84,11 @@ class Polite
         self::returnResponse(false, 400, 'solution_missing');
     }
 
+    public static function returnWrongApiKeyError()
+    {
+        self::returnResponse(false, 401, 'wrong_api_key');
+    }
+
     public static function returnValid()
     {
         self::returnResponse(true, 200);
