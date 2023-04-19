@@ -1,8 +1,9 @@
 <?php
 
-require_once 'env.php';
-require_once 'polite.class.php';
-require_once 'captcha.class.php';
+use FriendlyCaptcha\Captcha;
+use FriendlyCaptcha\Polite;
+
+require_once 'vendor/autoload.php';
 
 Polite::cors();
 

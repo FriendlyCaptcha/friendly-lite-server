@@ -1,4 +1,5 @@
 <?php
+namespace FriendlyCaptcha;
 
 class Polite
 {
@@ -48,11 +49,11 @@ class Polite
 
     public static function log($message)
     {
-        if (LOG_FILE == false) {
+        if (Env::LOG_FILE == false) {
             return;
         }
         $timestamp = date('[Y-m-d H:i:sP]');
-        file_put_contents(LOG_FILE, $timestamp . ' ' . $message . PHP_EOL, FILE_APPEND);
+        file_put_contents(Env::LOG_FILE, $timestamp . ' ' . $message . PHP_EOL, FILE_APPEND);
     }
 
     public static function anonymizeIp(string $ip): string
@@ -66,7 +67,7 @@ class Polite
 
     public static function signBuffer(string $buffer)
     {
-        return hash_hmac('sha256', $buffer, SECRET);
+        return hash_hmac('sha256', $buffer, Env::SECRET);
     }
 
     public static function returnSolutionInvalid()

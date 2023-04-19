@@ -1,12 +1,12 @@
 <?php
 
-require_once 'env.php';
-require_once 'polite.class.php';
-require_once 'captcha.class.php';
-require_once 'exceptions/emptySolutionException.class.php';
-require_once 'exceptions/timeoutOrDuplicateException.class.php';
-require_once 'exceptions/wrongApiKeyException.class.php';
+use FriendlyCaptcha\Captcha;
+use FriendlyCaptcha\Exceptions\EmptySolutionException;
+use FriendlyCaptcha\Exceptions\TimeoutOrDuplicateException;
+use FriendlyCaptcha\Exceptions\WrongApiKeyException;
+use FriendlyCaptcha\Polite;
 
+require_once 'vendor/autoload.php';
 
 /**
  * https://github.com/FriendlyCaptcha/friendly-pow
