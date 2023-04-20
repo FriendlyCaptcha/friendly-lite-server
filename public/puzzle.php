@@ -1,7 +1,7 @@
 <?php
 
-use FriendlyCaptcha\Captcha;
-use FriendlyCaptcha\Polite;
+use FriendlyCaptcha\Lite\Captcha;
+use FriendlyCaptcha\Lite\Polite;
 
 require_once 'vendor/autoload.php';
 

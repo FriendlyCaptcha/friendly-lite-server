@@ -1,5 +1,5 @@
 <?php
-namespace FriendlyCaptcha;
+namespace FriendlyCaptcha\Lite;
 
 class Env {
     const LOG_FILE =  __DIR__ . '/../logs/polite.log'; // set false to disable

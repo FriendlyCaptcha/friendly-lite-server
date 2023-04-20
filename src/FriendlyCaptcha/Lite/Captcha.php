@@ -1,9 +1,9 @@
 <?php
-namespace FriendlyCaptcha;
+namespace FriendlyCaptcha\Lite;
 
-use FriendlyCaptcha\Exceptions\EmptySolutionException;
-use FriendlyCaptcha\Exceptions\TimeoutOrDuplicateException;
-use FriendlyCaptcha\Exceptions\WrongApiKeyException;
+use FriendlyCaptcha\Lite\Exceptions\EmptySolutionException;
+use FriendlyCaptcha\Lite\Exceptions\TimeoutOrDuplicateException;
+use FriendlyCaptcha\Lite\Exceptions\WrongApiKeyException;
 
 class Captcha {
     public function buildPuzzle(string $remoteIp): string {

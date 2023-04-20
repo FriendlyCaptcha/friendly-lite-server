@@ -1,5 +1,5 @@
 <?php
-namespace FriendlyCaptcha;
+namespace FriendlyCaptcha\Lite;
 
 class Polite
 {

@@ -1,5 +1,5 @@
 <?php
-namespace FriendlyCaptcha\Exceptions;
+namespace FriendlyCaptcha\Lite\Exceptions;
 
 class EmptySolutionException extends \Exception {
 }

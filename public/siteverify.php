@@ -1,10 +1,10 @@
 <?php
 
-use FriendlyCaptcha\Captcha;
-use FriendlyCaptcha\Exceptions\EmptySolutionException;
-use FriendlyCaptcha\Exceptions\TimeoutOrDuplicateException;
-use FriendlyCaptcha\Exceptions\WrongApiKeyException;
-use FriendlyCaptcha\Polite;
+use FriendlyCaptcha\Lite\Captcha;
+use FriendlyCaptcha\Lite\Exceptions\EmptySolutionException;
+use FriendlyCaptcha\Lite\Exceptions\TimeoutOrDuplicateException;
+use FriendlyCaptcha\Lite\Exceptions\WrongApiKeyException;
+use FriendlyCaptcha\Lite\Polite;
 
 require_once 'vendor/autoload.php';
 
