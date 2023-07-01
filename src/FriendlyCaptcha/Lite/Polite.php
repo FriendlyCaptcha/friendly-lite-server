@@ -49,11 +49,12 @@ class Polite
 
     public static function log($message)
     {
-        if (Env::LOG_FILE == false) {
+        $logfile = Env::getLogFile();
+        if ($logfile == false) {
             return;
         }
         $timestamp = date('[Y-m-d H:i:sP]');
-        file_put_contents(Env::LOG_FILE, $timestamp . ' ' . $message . PHP_EOL, FILE_APPEND);
+        file_put_contents($logfile, $timestamp . ' ' . $message . PHP_EOL, FILE_APPEND);
     }
 
     public static function anonymizeIp(string $ip): string
@@ -67,7 +68,7 @@ class Polite
 
     public static function signBuffer(string $buffer)
     {
-        return hash_hmac('sha256', $buffer, Env::SECRET);
+        return hash_hmac('sha256', $buffer, Env::getSecret());
     }
 
     public static function returnSolutionInvalid()

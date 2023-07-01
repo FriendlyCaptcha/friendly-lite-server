@@ -26,6 +26,35 @@ You need a web server running PHP 7.4 or later.
 Instead of `https://api.friendlycaptcha.com/api/v1/siteverify` use `https://yourserver/siteverify.php`.
 Instead of `https://(eu-)api.friendlycaptcha.eu/api/v1/puzzle"` use `https://yourserver/puzzle.php`. 
 
+## Running as Docker Container
+
+You can also run the server as a docker container. Use the following command to build the container:
+
+```bash
+docker build -t friendly-lite-server .
+```
+
+Then run the container with the following command:
+
+```bash
+docker run -d -p 80:80 -e "SECRET=FILL-YOUR-SECRET-HERE" -e "API_KEY=FILL-YOUR-API-KEY-HERE" friendly-lite-server
+```
+
+Alternatively, use the following `docker-compose` commands:
+
+```bash
+docker-compose build
+docker-compose up -d
+```
+
+When using Docker, the following environment variables are available:
+
+* `SECRET`: Your secret 
+* `API_KEY`: Your api key
+* `LOG_FILE`: Default is `php://stdout`.
+* `SCALING_TTL_SECONDS`: Default is `1800`
+* `EXPIRY_TIMES_5_MINUTES`: Default is `12`
+
 ## What works
 
 * Check of signature

@@ -10,7 +10,7 @@ class Captcha {
         $accountId = 1;
         $appId = 1;
         $puzzleVersion = 1;
-        $puzzleExpiry = Env::EXPIRY_TIMES_5_MINUTES;
+        $puzzleExpiry = Env::getExpiryTimes5Minutes();
         
         // smart scaling
         $anonymizedIp = Polite::anonymizeIp($remoteIp);
@@ -21,11 +21,11 @@ class Captcha {
         } else {
             $requestTimes = 1;
         }
-        apcu_store($ipKey, $requestTimes, Env::SCALING_TTL_SECOUNDS);
+        apcu_store($ipKey, $requestTimes, Env::getScalingTtlSeconds());
 
         Polite::log(sprintf('This is request %d from IP %s in the last 30 minutes (or longer, if there were subsequent requests)', $requestTimes, $anonymizedIp));
 
-        foreach(array_reverse(Env::SCALING, true) as $threshold => $scale) {
+        foreach(array_reverse(Env::getScaling(), true) as $threshold => $scale) {
             if ($requestTimes > $threshold) {
                 $numberOfSolutions = $scale['solutions'];
                 $puzzleDifficulty = $scale['difficulty'];
@@ -63,7 +63,7 @@ class Captcha {
 
     public function verifyPuzzle(string $apiKey, string $solution): bool {
         // check API key
-        if ($apiKey != Env::API_KEY){
+        if ($apiKey != Env::getApiKey()){
             throw new WrongApiKeyException();
         }
 
@@ -82,7 +82,7 @@ class Captcha {
         }
 
         // only need to store as long as valid, after that the timeout will kick in
-        if (!apcu_add($puzzleHex, true, Env::EXPIRY_TIMES_5_MINUTES * 300)) {
+        if (!apcu_add($puzzleHex, true, Env::getExpiryTimes5Minutes() * 300)) {
             Polite::log(sprintf('Puzzle "%s" was already successfully used before', $puzzleHex));
             throw new TimeoutOrDuplicateException();
         }
