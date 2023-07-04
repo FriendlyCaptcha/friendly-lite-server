@@ -17,7 +17,7 @@ If you need more advanced security features and reliability or want to support o
 You need a web server running PHP 7.4 or later.
 
 1. Install the public folder to the your document root.
-2. Copy and adapt env.template.php to env.php 
+2. Copy and adapt Env.template.php to Env.php in classes folder.
 3. Change the friendly captcha widgets endpoint to user your server
 4. In your backend configuration, use the your own server endpoint and
 
