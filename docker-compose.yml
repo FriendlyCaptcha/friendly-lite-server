@@ -1,0 +1,15 @@
+version: '3.3'
+services:
+  friendly-lite-server:
+    restart: unless-stopped
+    image: friendly-lite-server:latest
+    build: .
+    ports:
+      - "80:80"
+    environment:
+      - SECRET=FILL-YOUR-SECRET-HERE
+      - API_KEY=FILL-YOUR-API-KEY-HERE
+      # Adjust the following to your needs
+      # - LOG_FILE=php://stdout
+      # - SCALING_TTL_SECONDS=1800
+      # - EXPIRY_TIMES_5_MINUTES=12

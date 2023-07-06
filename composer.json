@@ -1,0 +1,22 @@
+{
+    "name": "friendlycaptcha/friendly-lite-server",
+    "description": "Lite server for Friendly Captcha",
+    "require-dev": {
+        "phpunit/phpunit": "^9.6"
+    },
+    "license": "Apache 2.0 with Commons Attribution Clause",
+    "authors": [
+        {
+            "name": "Friendly Captcha GmbH (www.friendlycaptcha.com)"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "FriendlyCaptcha\\Lite\\": "src/FriendlyCaptcha/Lite"
+        },
+        "classmap": [
+            "src/"
+        ]
+    }
+}
