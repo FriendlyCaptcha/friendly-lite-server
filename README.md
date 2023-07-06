@@ -63,6 +63,23 @@ When using Docker, the following environment variables are available:
 * Replay checks
 * Basic difficulty scaling
 
+## Executing tests
+
+To run the included [PHPUnit](https://phpunit.de/index.html) tests, make sure you have [composer](https://getcomposer.org/) installed. Then run:
+
+```bash
+composer install
+./vendor/bin/phpunit
+```
+
+If you want to execute the [PHPUnit code coverage reporting](https://docs.phpunit.de/en/9.6/textui.html#the-command-line-test-runner), make sure you have [XDebug](https://xdebug.org/docs/install) installed and activated in your PHP CLI ini. You could for example install it via `pecl install xdebug` and then make sure your `/etc/php/x.xx/cli/php.ini` contains a line like `zend_extension=xdebug.so`. Then, to for example create an HTML coverage report, run:
+
+```bash
+XDEBUG_MODE=coverage ./vendor/bin/phpunit --coverage-html coverage
+```
+
+Your report will be saved to the `coverage` folder in this example.
+
 ## License 
 
 This software is [**fair-code**](http://faircode.io) distributed under [**Apache 2.0 with Commons Attribution Clause**](https://github.com/FriendlyCaptcha/friendly-lite-server/blob/main/LICENSE) license.
