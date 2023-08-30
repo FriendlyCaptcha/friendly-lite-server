@@ -11,7 +11,7 @@ class Captcha {
         $appId = 1;
         $puzzleVersion = 1;
         $puzzleExpiry = Env::getExpiryTimes5Minutes();
-        
+
         // smart scaling
         $anonymizedIp = Polite::anonymizeIp($remoteIp);
         $ipKey = 'ip_rate_limit_' . $anonymizedIp;
@@ -44,15 +44,15 @@ class Captcha {
         $timeHex = dechex(time());
         $accountIdHex = Polite::padHex(dechex($accountId), 4);
         $appIdHex = Polite::padHex(dechex($appId), 4);
-        $puzzleVersionHex = Polite::padHex(dechex($appId), 1);
+        $puzzleVersionHex = Polite::padHex(dechex($puzzleVersion), 1);
         $puzzleExpiryHex = Polite::padHex(dechex($puzzleExpiry), 1);
         $numberOfSolutionsHex = Polite::padHex(dechex($numberOfSolutions), 1);
         $puzzleDifficultyHex = Polite::padHex(dechex($puzzleDifficulty), 1);
         $reservedHex = Polite::padHex('', 8);
         $puzzleNonceHex = Polite::padHex(bin2hex($nonce), 8);
-        
+
         $bufferHex = Polite::padHex($timeHex, 4) . $accountIdHex . $appIdHex . $puzzleVersionHex . $puzzleExpiryHex . $numberOfSolutionsHex . $puzzleDifficultyHex . $reservedHex . $puzzleNonceHex;
-        
+
 
         $buffer = hex2bin($bufferHex);
         $hash = Polite::signBuffer($buffer);
