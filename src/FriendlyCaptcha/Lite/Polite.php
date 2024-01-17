@@ -1,4 +1,5 @@
 <?php
+namespace FriendlyCaptcha\Lite;
 
 class Polite
 {
@@ -48,11 +49,12 @@ class Polite
 
     public static function log($message)
     {
-        if (LOG_FILE == false) {
+        $logfile = Env::getLogFile();
+        if ($logfile == false) {
             return;
         }
         $timestamp = date('[Y-m-d H:i:sP]');
-        file_put_contents(LOG_FILE, $timestamp . ' ' . $message . PHP_EOL, FILE_APPEND);
+        file_put_contents($logfile, $timestamp . ' ' . $message . PHP_EOL, FILE_APPEND);
     }
 
     public static function anonymizeIp(string $ip): string
@@ -66,7 +68,7 @@ class Polite
 
     public static function signBuffer(string $buffer)
     {
-        return hash_hmac('sha256', $buffer, SECRET);
+        return hash_hmac('sha256', $buffer, Env::getSecret());
     }
 
     public static function returnSolutionInvalid()
@@ -82,6 +84,11 @@ class Polite
     public static function returnErrorEmptySolution()
     {
         self::returnResponse(false, 400, 'solution_missing');
+    }
+
+    public static function returnWrongApiKeyError()
+    {
+        self::returnResponse(false, 401, 'wrong_api_key');
     }
 
     public static function returnValid()
