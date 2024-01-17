@@ -103,7 +103,7 @@ class Polite
         ];
 
         if ($error !== null) {
-            $result['error'] = $error;
+            $result['errors'] = [$error];
         }
 
         http_response_code($httpCode);
