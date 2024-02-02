@@ -11,9 +11,8 @@ RUN pecl install apcu \
     && docker-php-ext-enable apcu
 
 # Copy our application code
-COPY ./public /var/www/html
-COPY ./src /var/www/src
+COPY --chown=www-data:www-data ./public /var/www/html
+COPY --chown=www-data:www-data ./src /var/www/src
 
 # Activate the env file (configuration will be done via env-variables)
-RUN mv /var/www/src/FriendlyCaptcha/Lite/Env.template.php /var/www/src/FriendlyCaptcha/Lite/Env.php \
-    && chown -R www-data:www-data /var/www/src
+RUN mv /var/www/src/FriendlyCaptcha/Lite/Env.template.php /var/www/src/FriendlyCaptcha/Lite/Env.php
